@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Search Form</title>
+</head>
+<body>
+
+  <h2>Student Search Form</h2>
+
+  <form [formGroup]="getDetails" (ngSubmit)="submit()">
+    <label>
+      <input type="radio" name="searchBy" value="grade" formControlName="searchBy" checked>
+      Search by register number
+    </label>
+    <label>
+      <input type="radio" name="searchBy" value="department" formControlName="searchBy">
+      Search by Department
+    </label>
+    <br>
+
+    <label for="searchInput">Search Term:</label>
+    <input type="text" id="searchInput" name="searchInput" formControlName="searchInput" required>
+    <br>
+
+    <button type="submit">Search</button>
+  </form>
+
+  <ul *ngFor="let std of filterdStudent">
+    <li>student name:{{std.StudentName|uppercase}} - registernumber:{{std.grade}} - department:{{std.department}}</li>
+</ul>
+  <button [routerLink]="['/home']">home</button>
+  <router-outlet></router-outlet>
+
+</body>
+</html>
+
